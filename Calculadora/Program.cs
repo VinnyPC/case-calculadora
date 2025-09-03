@@ -17,6 +17,7 @@ namespace Calculadora
 
             Calculadora calculadora = new Calculadora();
 
+            Stack<long> historicoResultados = new Stack<long>();
 
             while (filaOperacoes.Count > 0)
             {
@@ -26,7 +27,8 @@ namespace Calculadora
                 Console.WriteLine("Operação atual: {0} {1} {2} = {3}",
                     operacao.valorA, operacao.operador, operacao.valorB, operacao.resultado);
 
-                // Imprime a fila de operações restantes
+                historicoResultados.Push(operacao.resultado);
+
                 if (filaOperacoes.Count > 0)
                 {
                     Console.WriteLine("Próximas operações:");
@@ -41,6 +43,11 @@ namespace Calculadora
                 }
 
                 Console.WriteLine(new string('═', 40));
+            }
+            Console.WriteLine("\nHistórico de resultados na  pilha:");
+            foreach (var resultado in historicoResultados)
+            {
+                Console.WriteLine(resultado);
             }
 
 
